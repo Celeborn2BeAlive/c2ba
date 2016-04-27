@@ -2,10 +2,20 @@
 
 namespace c2ba
 {
-namespace +LIB_NAME+ 
+namespace @LIBRARY_NAME@
 {
-    static constexpr char* LIBRARY_NAME = "@c2ba_+LIB_NAME+_LIBRARY_NAME@";
-    static constexpr int VERSION_MAJOR = @c2ba_+LIB_NAME+_VERSION_MAJOR@;
-    static constexpr int VERSION_MINOR = @c2ba_+LIB_NAME+_VERSION_MINOR@;
+    static constexpr int VERSION_MAJOR = @VERSION_MAJOR@;
+    static constexpr int VERSION_MINOR = @VERSION_MINOR@;
+    static constexpr int VERSION_PATCH = @VERSION_PATCH@;
+    
+    inline constexpr char* library_name()
+    {
+        return "@LIBRARY_NAME@";
+    }
+    
+    inline constexpr char* version_string()
+    {
+        return "@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_PATCH@";
+    }
 }
 }
