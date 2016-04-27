@@ -1,9 +1,9 @@
 cmake_minimum_required (VERSION 2.8)
 
-!!! REPLACE TEMPLATE WITH THE LIBRARY NAME !!!
+!!! REPLACE +LibName+ WITH THE LIBRARY NAME !!!
 
-set (C2BA_LIBRARY_NAME c2ba_TEMPLATE)
-set (C2BA_LIBRARY_CMAKE_PREFIX C2BA_TEMPLATE)
+set (C2BA_LIBRARY_NAME c2ba_+libname+)
+set (C2BA_LIBRARY_CMAKE_PREFIX C2BA_+LIB_NAME+)
 
 project (${C2BA_LIBRARY_NAME})
 
@@ -17,7 +17,7 @@ set (${C2BA_LIBRARY_NAME}_LIBRARY_NAME ${C2BA_LIBRARY_NAME})
 
 configure_file (
     "${PROJECT_SOURCE_DIR}/lib/cmake/info.hpp.in"
-    "${PROJECT_BINARY_DIR}/include/c2ba/TEMPLATE/info.hpp"
+    "${PROJECT_BINARY_DIR}/include/c2ba/+LIB_NAME+/info.hpp"
 )
 
 set_property (GLOBAL PROPERTY USE_FOLDERS ON)
@@ -43,7 +43,7 @@ add_library (
     ${PROJECT_FILES}
 )
 
-source_group ("c2ba\\TEMPLATE" REGULAR_EXPRESSION "lib/(src|include/c2ba/TEMPLATE)/[^/]*.*")
+source_group ("c2ba\\+LIB_NAME+" REGULAR_EXPRESSION "lib/(src|include/c2ba/+LIB_NAME+)/[^/]*.*")
 
 if (${C2BA_LIBRARY_CMAKE_PREFIX}_BUILD_TESTS)
     set (${C2BA_LIBRARY_NAME}_TEST_INCLUDE_LIST "")
@@ -54,13 +54,13 @@ if (${C2BA_LIBRARY_CMAKE_PREFIX}_BUILD_TESTS)
 
     configure_file (
         "${PROJECT_SOURCE_DIR}/tests/headers_compilation_test.cpp.in"
-        "${PROJECT_BINARY_DIR}/c2ba/TEMPLATE/tests/headers_compilation_test.cpp"
+        "${PROJECT_BINARY_DIR}/c2ba/+LIB_NAME+/tests/headers_compilation_test.cpp"
     )
 
     file (
         GLOB_RECURSE
         TEST_SRC_FILES
-        tests/*.cpp tests/*.hpp "${PROJECT_BINARY_DIR}/c2ba/TEMPLATE/tests/headers_compilation_test.cpp"
+        tests/*.cpp tests/*.hpp "${PROJECT_BINARY_DIR}/c2ba/+LIB_NAME+/tests/headers_compilation_test.cpp"
     )
     
     add_executable (
@@ -76,8 +76,7 @@ if (${C2BA_LIBRARY_CMAKE_PREFIX}_BUILD_TESTS)
 endif (${C2BA_LIBRARY_CMAKE_PREFIX}_BUILD_TESTS)
 
 install (DIRECTORY lib/include/c2ba DESTINATION include)
-install (FILES "${PROJECT_BINARY_DIR}/include/c2ba/TEMPLATE/info.hpp" DESTINATION include/c2ba/TEMPLATE)
-install (TARGETS ${C2BA_LIBRARY_NAME} DESTINATION lib/Release CONFIGURATIONS Release)
+install (FILES "${PROJECT_BINARY_DIR}/include/c2ba/+LIB_NAME+/info.hpp" DESTINATION include/c2ba/+LIB_NAME+)
 
 foreach (CONFIG ${CMAKE_CONFIGURATION_TYPES})
     install (
