@@ -4,3 +4,4 @@ project(c2ba)
 
 add_subdirectory(maths)
 add_subdirectory(glutils)
+add_subdirectory(filesystem)

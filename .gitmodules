@@ -4,3 +4,6 @@
 [submodule "glutils"]
 	path = glutils
 	url = https://github.com/Celeborn2BeAlive/c2ba-glutils.git
+[submodule "filesystem"]
+	path = filesystem
+	url = https://github.com/Celeborn2BeAlive/c2ba-filesystem.git
